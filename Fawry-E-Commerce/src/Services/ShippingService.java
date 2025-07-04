@@ -6,7 +6,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
+/**
+ * Provides functionality to process the shipping of items and generate a shipment notice.
+ * This service calculates the total weight of shippable items and outputs a formatted
+ * notice detailing the quantities, names, and weights of the items being shipped.
+ */
 public class ShippingService {
     public static void ship(List<Shippable> items, Map<String, Integer> quantities) {
         System.out.println("** Shipment notice **");

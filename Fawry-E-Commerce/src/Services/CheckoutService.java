@@ -8,7 +8,11 @@ import Entities.Interfaces.Shippable;
 
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * Provides functionality to process a checkout operation for a customer's cart.
+ * This service validates the cart, calculates costs, processes shipping, and updates
+ * the customer's balance, generating a formatted receipt upon successful checkout.
+ */
 public class CheckoutService {
     public static void checkout(Customer customer, Cart cart) {
 
@@ -24,8 +28,8 @@ public class CheckoutService {
                 throw new IllegalArgumentException("Product " + item.getProduct().getName() + " is out of stock.");
             }
         }
-        // get price only for shippable items in the cart
-        double subtotal = cart.getSubtotalForShippableProducts();
+        // get price for all items in the cart
+        double subtotal = cart.getTotalPriceForProducts();
 
         // I assume if there are products that need to be shipped, the cost will be $100.
 
@@ -37,13 +41,14 @@ public class CheckoutService {
 
         Map<String, Integer> quantityMap = new HashMap<>();
 
-        for (CartItem item : cart.getShippableItems()) {
+        for (CartItem item : cart.getItems()) {
             item.getProduct().setQuantity(item.getProduct().getQuantity() - item.getQuantity());
             // if there is duplicate products name will sum the quantity of all
             quantityMap.put(item.getProduct().getName(), quantityMap.getOrDefault(item.getProduct().getName(), 0) + item.getQuantity());
         }
 
         if (!cart.getShippableItems().isEmpty()) {
+            //send only shippable items
             ShippingService.ship(cart.getShippableItems().stream().map((p)->(Shippable) p.getProduct()).toList(), quantityMap);
         }
 
@@ -52,7 +57,7 @@ public class CheckoutService {
         System.out.println("** Checkout receipt **");
         System.out.printf("%-5s %-20s %-10s %-10s%n", "Qty", "Item", "Unit Price", "Total");
         System.out.println("---------------------------------------------");
-        for (CartItem item : cart.getShippableItems()) {
+        for (CartItem item : cart.getItems()) {
             System.out.printf("%-5d %-20s %-10.2f %-10.2f%n",
                     item.getQuantity(),
                     item.getProduct().getName(),

@@ -28,7 +28,13 @@ public class Cart {
         }
         return subTotal;
     }
-
+    public double getTotalPriceForProducts() {
+        double totalPrice = 0;
+        for (CartItem item : items) {
+            totalPrice += item.getTotalPrice();
+        }
+        return totalPrice;
+    }
     public List<CartItem> getShippableItems() {
         List<CartItem> shippableItems = new ArrayList<>();
         for (CartItem item : this.items) {
@@ -38,5 +44,6 @@ public class Cart {
         }
         return shippableItems;
     }
+
 
 }
