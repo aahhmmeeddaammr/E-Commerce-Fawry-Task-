@@ -1,6 +1,6 @@
 package Entities;
 
-import Interfaces.Shippable;
+import Entities.Interfaces.Shippable;
 
 import java.util.ArrayList;
 import java.util.List;

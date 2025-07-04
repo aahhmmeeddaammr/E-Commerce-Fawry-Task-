@@ -1,6 +1,6 @@
 package Entities;
 
-import Interfaces.Expirable;
+import Entities.Interfaces.Expirable;
 
 import java.time.LocalDate;
 

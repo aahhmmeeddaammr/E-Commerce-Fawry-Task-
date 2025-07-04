@@ -1,6 +1,6 @@
 package Services;
 
-import Interfaces.Shippable;
+import Entities.Interfaces.Shippable;
 
 import java.util.HashSet;
 import java.util.List;

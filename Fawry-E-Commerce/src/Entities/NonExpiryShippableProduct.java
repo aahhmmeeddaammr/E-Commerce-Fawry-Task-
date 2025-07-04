@@ -1,6 +1,6 @@
 package Entities;
 
-import Interfaces.Shippable;
+import Entities.Interfaces.Shippable;
 
 public class NonExpiryShippableProduct extends NonExpiryProduct implements Shippable {
     private double weight;

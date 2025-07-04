@@ -3,8 +3,8 @@ package Services;
 import Entities.Cart;
 import Entities.CartItem;
 import Entities.Customer;
-import Interfaces.Expirable;
-import Interfaces.Shippable;
+import Entities.Interfaces.Expirable;
+import Entities.Interfaces.Shippable;
 
 import java.util.HashMap;
 import java.util.Map;
