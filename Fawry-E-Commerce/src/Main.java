@@ -16,7 +16,7 @@ public class Main {
         // Generate user cart
         Cart cart = new Cart();
         // add products into cart
-        cart.add(cheese, 1);
+        cart.add(cheese, 2);
         cart.add(biscuits, 1);
         cart.add(scratchCard, 1);
         cart.add(tv, 1);

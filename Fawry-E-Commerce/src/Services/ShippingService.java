@@ -24,7 +24,7 @@ public class ShippingService {
             String name = item.getName();
             if (!printed.contains(name)) {
                 int qty = quantities.get(name);
-                double weightGrams = item.getWeight() * 1000;
+                double weightGrams = item.getWeight() * 1000 * qty;
                 double totalWeightForItem = qty * item.getWeight();
 
                 System.out.printf("%-5d %-25s %-15.0f%n", qty, name, weightGrams);
